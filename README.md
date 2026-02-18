@@ -1,73 +1,231 @@
-# React + TypeScript + Vite
+# Good Will Builders - Real Estate Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A production-level real estate website built with React, TypeScript, and Vite for Good Will Builders construction company.
 
-Currently, two official plugins are available:
+## 🏗️ Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Good Will Builders is a premium construction and real estate development company specializing in residential and commercial properties. This website showcases their portfolio, services, and company information with a modern, responsive design.
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Hero Carousel**: Full-width image carousel with smooth transitions
+- **Project Portfolio**: Filterable gallery of completed and ongoing projects
+- **Project Detail Pages**: Detailed views with image galleries and amenities
+- **Contact Form**: Interactive contact form with validation
+- **About Section**: Company story, team, and achievements
+- **Modern UI**: Clean, professional design with orange gradient branding
+- **Performance**: Lazy loading, optimized components, and fast navigation
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Routing**: React Router v6 with lazy loading
+- **Styling**: Tailwind CSS with custom theme
+- **State Management**: React Context API
+- **Architecture**: Atomic Design pattern
+- **Icons**: Heroicons (inline SVG)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📁 Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── assets/           # Static assets
+├── components/       # Reusable UI components
+│   ├── atoms/       # Smallest reusable elements
+│   ├── molecules/   # Combinations of atoms
+│   └── organisms/   # Complex UI sections
+├── context/         # React Context providers
+├── data/           # Mock data and types
+├── hooks/          # Custom React hooks
+├── pages/          # Route components
+├── routes/         # Routing configuration
+├── theme/          # Design system and theme
+└── utils/          # Utility functions
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 Design System
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Color Palette
+- **Primary**: Orange gradient (#ff7a00 → #ff4500)
+- **Secondary**: Brick red (#b52b2b), Deep blue (#1f3b57)
+- **Neutral**: Light background (#f8f9fa), White, Gray scale
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Typography
+- **Font Family**: Poppins (Google Fonts)
+- **Scale**: Responsive typography system
+- **Weights**: 300-800 for visual hierarchy
+
+## 📱 Pages
+
+1. **Home** (`/`)
+   - Hero carousel with call-to-action
+   - Featured projects grid
+   - Company statistics
+   - About preview section
+
+2. **Projects** (`/projects`)
+   - Filterable project gallery
+   - Status badges (Ongoing/Completed)
+   - Responsive grid layout
+
+3. **Project Detail** (`/projects/:id`)
+   - Large hero banner
+   - Image gallery with navigation
+   - Detailed specifications
+   - Amenities list
+   - Contact sidebar
+
+4. **About** (`/about`)
+   - Company mission and values
+   - Achievement statistics
+   - Leadership team
+   - Company history
+
+5. **Contact** (`/contact`)
+   - Contact form with validation
+   - Business hours
+   - Contact information
+   - Location details
+
+## 🏛️ Architecture Patterns
+
+### Atomic Design
+- **Atoms**: Basic UI elements (buttons, inputs)
+- **Molecules**: Simple component combinations (cards, forms)
+- **Organisms**: Complex sections (navbar, footer, hero)
+
+### Context API
+- **MobileMenuContext**: Mobile navigation state
+- **ProjectFilterContext**: Project filtering state
+- **AppContext**: Global theme and app state
+
+### Performance Optimizations
+- **Lazy Loading**: Route-based code splitting
+- **Image Optimization**: Responsive images with lazy loading
+- **Component Memoization**: Prevent unnecessary re-renders
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd goodwill-builders
 ```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start development server:
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix linting issues
+
+## 📊 Data Structure
+
+### Project Interface
+```typescript
+interface Project {
+  id: number
+  title: string
+  description: string
+  image: string
+  status: 'ongoing' | 'completed'
+  price: string
+  location: string
+  bedrooms: number
+  bathrooms: number
+  area: string
+  featured: boolean
+  images: string[]
+  amenities: string[]
+  specifications: {
+    yearBuilt: string
+    propertyType: string
+    floors: number
+    units: number
+    parkingSpaces: number
+  }
+}
+```
+
+## 🔧 Customization
+
+### Adding New Projects
+1. Update `src/data/mockData.ts`
+2. Add new project objects to the projects array
+3. Include all required fields and images
+
+### Modifying Theme
+1. Update `src/theme/colors.ts` for color changes
+2. Update `src/theme/typography.ts` for font changes
+3. Update `src/theme/theme.ts` for spacing and breakpoints
+
+### Adding New Pages
+1. Create component in `src/pages/`
+2. Add route in `src/routes/router.tsx`
+3. Update navigation in `src/components/organisms/Navbar.tsx`
+
+## 🌐 Deployment
+
+### Build for Production
+```bash
+npm run build
+```
+
+### Environment Variables
+Create a `.env.production` file for production configuration:
+
+```env
+VITE_API_URL=https://api.goodwillbuilders.com
+VITE_CONTACT_EMAIL=info@goodwillbuilders.com
+```
+
+## 📱 Browser Support
+
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 📞 Contact
+
+**Good Will Builders**
+- Email: info@goodwillbuilders.com
+- Phone: (555) 123-4567
+- Address: 123 Construction Ave, Building City, BC 12345
+
+---
+
+Built with ❤️ for Good Will Builders
