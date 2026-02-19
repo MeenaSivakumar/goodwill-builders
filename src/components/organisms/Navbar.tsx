@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, Phone, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
+import logo from '@/assets/logo.svg'
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -38,7 +39,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2">
             <div className="flex items-center">
-             <img src="/src/assets/logo.svg" alt="Goodwill Builders Logo" className="h-12 w-12 md:h-10 md:w-10" />
+             <img src={logo} alt="Goodwill Builders Logo" className="h-12 w-12 md:h-10 md:w-10" />
               <div>
                 <span
                   className={`font-heading font-bold text-lg md:text-xl tracking-tight transition-colors ${
