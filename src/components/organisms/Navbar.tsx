@@ -38,11 +38,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2">
             <div className="flex items-center">
-              <div className="gradient-orange rounded-md p-1.5 mr-2">
-                <span className="font-heading font-bold text-primary-foreground text-sm md:text-base">
-                  G
-                </span>
-              </div>
+             <img src="/src/assets/logo.svg" alt="Goodwill Builders Logo" className="h-12 w-12 md:h-10 md:w-10" />
               <div>
                 <span
                   className={`font-heading font-bold text-lg md:text-xl tracking-tight transition-colors ${
