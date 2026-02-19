@@ -140,35 +140,6 @@ npm run dev
 - `npm run lint` - Run ESLint
 - `npm run lint:fix` - Fix linting issues
 
-## 📊 Data Structure
-
-### Project Interface
-```typescript
-interface Project {
-  id: number
-  title: string
-  description: string
-  image: string
-  status: 'ongoing' | 'completed'
-  price: string
-  location: string
-  bedrooms: number
-  bathrooms: number
-  area: string
-  featured: boolean
-  images: string[]
-  amenities: string[]
-  specifications: {
-    yearBuilt: string
-    propertyType: string
-    floors: number
-    units: number
-    parkingSpaces: number
-  }
-}
-```
-
-## 🔧 Customization
 
 ### Adding New Projects
 1. Update `src/data/mockData.ts`
@@ -219,13 +190,7 @@ VITE_CONTACT_EMAIL=info@goodwillbuilders.com
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📞 Contact
 
-**Good Will Builders**
-- Email: info@goodwillbuilders.com
-- Phone: (555) 123-4567
-- Address: 123 Construction Ave, Building City, BC 12345
 
----
 
 Built with ❤️ for Good Will Builders

@@ -8,7 +8,7 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-const amenityIcons: Record<string, string> = {};
+// const amenityIcons: Record<string, string> = {};
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
