@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Eye, Target } from 'lucide-react'
+import Layout from '@/components/organisms/Layout'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -14,7 +15,7 @@ const leaders = [
 
 const About: React.FC = () => {
   return (
-    <>
+    <Layout>
       <title>About Us – Goodwill Builders</title>
       <meta
         name="description"
@@ -105,7 +106,7 @@ const About: React.FC = () => {
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">Leadership</span>
-            <h2 className="font-heading text-3xl font-bold mt-3 mb-10">The Team Behind Goodwill</h2>
+            <h2 className="font-heading text-3xl font-bold mt-3 mb-12">The Team Behind Goodwill</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {leaders.map((leader, i) => (
@@ -127,7 +128,7 @@ const About: React.FC = () => {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }
 

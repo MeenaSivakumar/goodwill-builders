@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import ProjectCard from '../components/molecules/ProjectCard'
 import { projects } from '@/data/projects'
+import Layout from '@/components/organisms/Layout'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -9,7 +10,7 @@ const fadeUp = {
 
 const Projects: React.FC = () => {
   return (
-    <>
+    <Layout>
       <title>Projects – Goodwill Builders</title>
       <meta
         name="description"
@@ -55,7 +56,7 @@ const Projects: React.FC = () => {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }
 

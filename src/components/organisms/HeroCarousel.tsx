@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import { Link } from 'react-router-dom'
 
 interface HeroSlide {
   id: number
@@ -15,103 +17,84 @@ interface HeroCarouselProps {
 }
 
 const HeroCarousel: React.FC<HeroCarouselProps> = ({ slides }) => {
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'start',
+    slidesToScroll: 1
+  })
+  const [selectedIndex, setSelectedIndex] = useState(0)
+
+  const scrollTo = useCallback((index: number) => {
+    if (emblaApi) emblaApi.scrollTo(index)
+  }, [emblaApi])
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000)
+    if (!emblaApi) return
 
-    return () => clearInterval(timer)
-  }, [slides.length])
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap())
+    }
 
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index)
-  }
+    emblaApi.on('select', onSelect)
+    onSelect()
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length)
-  }
+    // Auto-play functionality
+    const autoplay = setInterval(() => {
+      if (emblaApi) {
+        emblaApi.scrollNext()
+      }
+    }, 5000) // Change slide every 5 seconds
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-  }
+    return () => {
+      emblaApi.off('select', onSelect)
+      clearInterval(autoplay)
+    }
+  }, [emblaApi])
 
   return (
-    <div className="relative h-screen overflow-hidden">
-      {/* Slides */}
-      <div className="relative h-full">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${slide.image})` }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
-            <div className="relative h-full flex items-center">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="max-w-2xl">
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-                    {slide.title}
-                  </h1>
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-orange-400 mb-6">
-                    {slide.subtitle}
-                  </h2>
-                  <p className="text-lg md:text-xl text-gray-200 mb-8">
-                    {slide.description}
-                  </p>
-                  <a
-                    href={slide.ctaLink}
-                    className="btn-primary text-lg px-8 py-4"
-                  >
-                    {slide.cta}
-                  </a>
-                </div>
+    <section className="relative h-screen overflow-hidden">
+      <div className="embla__viewport" ref={emblaRef}>
+        <div className="embla__container flex h-full">
+          {slides.map((slide, index) => (
+            <div key={slide.id} className="embla__slide flex-none w-full h-full relative">
+              <img
+                src={slide.image}
+                className="absolute inset-0 w-full h-full object-cover"
+                alt={slide.title}
+              />
+              <div className="absolute inset-0 bg-black/50"></div>
+              <div className="container relative z-10 h-full flex flex-col justify-center pt-24">
+                <h1 className="text-white text-6xl md:text-7xl font-serif leading-tight mb-6 max-w-3xl">
+                  {slide.title}
+                </h1>
+                <p className="text-gray-200 text-lg mb-8 max-w-xl">
+                  {slide.subtitle}
+                </p>
+                <Link
+                  to={slide.ctaLink}
+                  className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition inline-block w-fit mb-8"
+                >
+                  {slide.cta}
+                </Link>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-colors"
-        aria-label="Previous slide"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-colors"
-        aria-label="Next slide"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-
-      {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+      
+      {/* Carousel dots */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              index === currentSlide ? 'bg-orange-500' : 'bg-white/50'
+            onClick={() => scrollTo(index)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              index === selectedIndex ? 'bg-white w-8' : 'bg-white/50'
             }`}
-            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 

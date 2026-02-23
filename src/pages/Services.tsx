@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Briefcase, Building2, KeyRound, Settings, Store } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import Layout from '@/components/organisms/Layout'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -45,7 +46,7 @@ const services = [
 
 const Services: React.FC = () => {
   return (
-    <>
+    <Layout>
       <title>Services – Goodwill Builders</title>
       <meta
         name="description"
@@ -112,7 +113,7 @@ const Services: React.FC = () => {
           </motion.div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }
 

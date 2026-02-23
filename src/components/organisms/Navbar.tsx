@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2">
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
              <img src={logo} alt="Goodwill Builders Logo" className="h-12 w-12 md:h-10 md:w-10" />
               <div>
                 <span

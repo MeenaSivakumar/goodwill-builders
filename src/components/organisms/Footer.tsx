@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom'
 import { Mail, MapPin, Phone } from 'lucide-react'
-
+import logo from '@/assets/logo.svg'
 const Footer = () => {
   return (
     <footer className="bg-navy text-navy-foreground">
-      <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="container mx-auto px-4 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-10">
           <div>
-            <div className="flex items-center mb-4">
-              <div className="gradient-orange rounded-md p-1.5 mr-2">
-                <span className="font-heading font-bold text-primary-foreground text-sm">G</span>
-              </div>
+            <div className="flex items-center mb-4 gap-2">
+            
+                <img src={logo} alt='logo' className='w-12 h-12'/>
+             
               <div>
                 <span className="font-heading font-bold text-lg text-navy-foreground">Goodwill</span>
                 <span className="font-heading font-medium text-lg text-primary ml-1">Builders</span>
@@ -33,14 +33,14 @@ const Footer = () => {
                 { label: 'About Us', path: '/about' },
                 { label: 'Contact', path: '/contact' },
               ].map((link) => (
-                <li key={link.path}>
+                <ul key={link.path}>
                   <Link
                     to={link.path}
                     className="text-sm text-navy-foreground/70 hover:text-primary transition-colors"
                   >
                     {link.label}
                   </Link>
-                </li>
+                </ul>
               ))}
             </ul>
           </div>
@@ -83,12 +83,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-navy-foreground/10 mt-12 pt-8 text-center">
+      </div>
+      
+        <div className="border-t border-navy-foreground/10 mt-6 py-4 text-center">
           <p className="text-sm text-navy-foreground/50">
             © {new Date().getFullYear()} Goodwill Builders. All rights reserved.
           </p>
         </div>
-      </div>
     </footer>
   )
 }

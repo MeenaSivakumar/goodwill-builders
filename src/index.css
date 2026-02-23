@@ -42,7 +42,14 @@ a {
 }
 
 a:hover {
-  color: #ff4500;
+  opacity: 0.85;
+}
+
+.gradient-orange,
+.gradient-orange:hover,
+.btn-primary,
+.btn-primary:hover {
+  color: #ffffff !important;
 }
 
 img {
@@ -216,6 +223,19 @@ button {
 
 .font-heading {
   font-family: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+/* Border utilities */
+.border-slate {
+  border-color: #1e293b;
+}
+
+.border-soft {
+  border-color: rgba(30, 41, 59, 0.6);
+}
+
+.border-design {
+  border: 1px solid #E4DDD4;
 }
 
 /* Tailwind-like utility helpers used in new card */
@@ -958,6 +978,24 @@ button {
   transition-duration: 300ms;
 }
 
+/* Project Layout CSS */
+.project-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .project-layout {
+    grid-template-columns: 3fr 1fr;
+  }
+}
+
+.sticky-sidebar {
+  position: sticky;
+  top: 7rem;
+}
+
 /* Embla Carousel CSS */
 .embla__viewport {
   overflow: hidden;
@@ -1549,6 +1587,24 @@ button {
 
 .duration-300 {
   transition-duration: 300ms;
+}
+
+/* Project Layout CSS */
+.project-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .project-layout {
+    grid-template-columns: 3fr 1fr;
+  }
+}
+
+.sticky-sidebar {
+  position: sticky;
+  top: 7rem;
 }
 
 /* Embla Carousel CSS */

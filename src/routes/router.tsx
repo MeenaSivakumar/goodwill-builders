@@ -8,6 +8,7 @@ const ProjectDetail = lazy(() => import('../pages/ProjectDetail'))
 const Services = lazy(() => import('../pages/Services'))
 const About = lazy(() => import('../pages/About'))
 const Contact = lazy(() => import('../pages/Contact'))
+const Index = lazy(() => import('../pages/index'))
 
 // Layout component
 const Layout = lazy(() => import('../components/organisms/Layout'))
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Index />,
       },
       {
         path: '/projects',

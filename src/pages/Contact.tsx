@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, MapPin, Phone, Send } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
+import Layout from '@/components/organisms/Layout'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -19,7 +20,7 @@ const Contact: React.FC = () => {
   }
 
   return (
-    <>
+    <Layout>
       <title>Contact Us – Goodwill Builders</title>
       <meta
         name="description"
@@ -53,7 +54,7 @@ const Contact: React.FC = () => {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg border-design bg-card text-foreground focus:border-primary outline-none transition-all"
                     placeholder="Your full name"
                   />
                 </div>
@@ -65,7 +66,7 @@ const Contact: React.FC = () => {
                       required
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border-design bg-card text-foreground focus:border-primary outline-none transition-all"
                       placeholder="you@email.com"
                     />
                   </div>
@@ -75,7 +76,7 @@ const Contact: React.FC = () => {
                       type="tel"
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border-design bg-card text-foreground focus:border-primary outline-none transition-all"
                       placeholder="+91 98765 43210"
                     />
                   </div>
@@ -87,7 +88,7 @@ const Contact: React.FC = () => {
                     required
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-lg border-design bg-card text-foreground focus:border-primary outline-none transition-all resize-none"
                     placeholder="Tell us about your requirements..."
                   />
                 </div>
@@ -140,7 +141,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }
 
