@@ -55,7 +55,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ slides }) => {
     <section className="relative h-screen overflow-hidden">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container flex h-full">
-          {slides.map((slide, index) => (
+          {slides.map((slide) => (
             <div key={slide.id} className="embla__slide flex-none w-full h-full relative">
               <img
                 src={slide.image}
